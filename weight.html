@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Calculator</title>
+    <link rel="stylesheet" href="./weight.css">
+
+    <script>
+
+        function change(){
+            var lab1=document.getElementById("dropdown").value;
+            if(lab1=="pound"){
+                document.getElementById("pound").value="0.453592";
+                document.getElementById("dropdown2").value="kilogram";
+            }
+            if(lab1=="kilogram"){
+                document.getElementById("pound").value="2.20462";
+                document.getElementById("dropdown2").value="pound";
+            }
+        }
+        
+        function weight(id1,id2)
+        {  
+            var lab=document.getElementById("dropdown").value;
+            var lab2=document.getElementById("dropdown2").value;
+            // alert(lab2);
+            var a =parseInt(document.getElementById(id1).value);
+            
+            if(lab==lab2){
+                alert("Converstion cannot be done ");
+            }
+            else if(lab=="kilogram"){
+                
+                const c=a*2.20462;
+                document.getElementById("result").value=c;
+            }
+            else{
+                const c =a*0.453592;
+                document.getElementById("result").value=c;
+            }
+            
+            // const c=a+b;
+            
+            
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <h1> Weight Converter</h1>
+        <div class="innerbox">
+            <!-- <label> Kilogram </label>
+             -->
+             <select id="dropdown" class="dropdown" name="fruit" onchange="change()">
+                <option value="kilogram">Kilogram</option>
+                <option value="pound">Pounds</option>
+              </select>
+            <input id="kilo" type="text" placeholder="Enter only  Number" > 
+            <p class="error" id="error"></p>
+        </div>
+        <br>
+
+        <div class="innerbox">
+            <!-- <label>Pounds</label> -->
+            <select id="dropdown2" class="dropdown" name="fruit">
+                <option value="pound">Pounds</option>
+                <option value="kilogram">Kilogram</option>
+                
+              </select>
+            <input type="text" id="pound" value="2.20462"> 
+        </div>
+        <br>
+
+        <div class="innerbox">
+            <button id="enter"  onclick="weight('kilo','pound')">Submit</button>
+        </div>
+        <br>
+
+        <div class="innerbox">
+            <label><h3>After Convertion </h3></label>
+            <input type="text" id="result" >
+        </div>
+
+    </div>
+</body>
+</html>
